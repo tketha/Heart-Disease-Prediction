@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #428bca;
+            margin-bottom: 30px;
+        }
+
+        form {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #428bca;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #428bca;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-container {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .positive-result {
+            color: #36b14f;
+        }
+
+        .negative-result {
+            color: #d9534f;
+        }
+
+        .heart-image {
+            display: block;
+            max-width: 300px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        /* Responsive styling for smaller screens */
+        @media only screen and (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .heart-image {
+                max-width: 150px;
+            }
+
+            input[type="submit"] {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .result-item {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.healthcareitnews.com/sites/hitnai/files/GettyImages-1044844364%3ADevrimb_2.jpg" alt="Heart Image" class="heart-image">
+        <h1>Heart Disease Prediction using Machine Learning</h1>
+        <form action="/" method="post">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender (0 for female, 1 for male):</label>
+            <input type="number" id="gender" name="gender" required>
+
+            <label for="height">Height (in cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <label for="weight">Weight (in kg):</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="ap_hi">Systolic Blood Pressure (ap_hi):</label>
+            <input type="number" id="ap_hi" name="ap_hi" required>
+
+            <label for="ap_lo">Diastolic Blood Pressure (ap_lo):</label>
+            <input type="number" id="ap_lo" name="ap_lo" required>
+
+            <label for="cholesterol">Cholesterol (1, 2, or 3):</label>
+            <input type="number" id="cholesterol" name="cholesterol" required>
+
+            <label for="gluc">Glucose Level (1, 2, or 3):</label>
+            <input type="number" id="gluc" name="gluc" required>
+
+            <label for="smoke">Smoking (0 for non-smoker, 1 for smoker):</label>
+            <input type="number" id="smoke" name="smoke" required>
+
+            <label for="alco">Alcohol Consumption (0 for non-alcoholic, 1 for alcoholic):</label>
+            <input type="number" id="alco" name="alco" required>
+
+            <label for="active">Physical Activity (0 for inactive, 1 for active):</label>
+            <input type="number" id="active" name="active" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if result %}
+            <div class="result-container">
+                <h2>Prediction Results:</h2>
+                <p class="result-item">Decision Tree: <span class="{% if result['Decision Tree'] == 'Positive' %}positive-result{% else %}negative-result{% endif %}">{{ result['Decision Tree'] }}</span></p>
+                <p class="result-item">Random Forest: <span class="{% if result['Random Forest'] == 'Positive' %}positive-result{% else %}negative-result{% endif %}">{{ result['Random Forest'] }}</span></p>
+            </div>
+        {% endif %}
+        
+    </div>
+
+    <script>
+        // Add JavaScript code here if needed
+    </script>
+</body>
+</html>
